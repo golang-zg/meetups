@@ -1,0 +1,5 @@
+.title(Go 1.25)
+.global.font-size(5svh)
+.global.hide.page.number
+.global.aspect-ratio-min(15x10)
+.global.aspect-ratio-max(20x10)
