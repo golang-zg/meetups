@@ -1,0 +1,64 @@
+.===============================================================================
+.===============================================================================
+
+.slide.title(GoTalks 23.09.2025)
+
+.css{margin-top:4svw; }
+.center
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**GoTalks 23.09.2025**)
+.center.end
+.css.end
+
+.slide.background(assets/golang-back.png)
+.===============================================================================
+.slide.title(QR code)
+.header
+.{position:absolute; margin-left: 1svw; top: 2svh!important}(.image(assets/1200px-Go_Logo_Blue.svg.png 12svw:))
+.css{font-size: 5svh; margin-bottom: 0px!important; margin-left: 14svw;}
+## GoTalks 23.09.2025
+.css.end
+<hr>
+.css{position: absolute; right:2svw; top:0.3svh; font-size: 5svh;}
+## [tvz.bratkovic.eu](https://tvz.bratkovic.eu/)
+.css.end
+.header.end
+
+.center
+.image(assets/qr-code.png :80svh)
+.center.end
+.===============================================================================
+.TITLE{How to reach us}
+
+#space#
+
+.css{text-align: center; display: flex;  justify-content: center; align-items: center;}
+.table
+.tr
+.td
+.image(assets/meetup.png :13svh)
+.td{text-align: left; padding-left: 5svw;}
+[meetup.com/Golang-ZG](https://www.meetup.com/Golang-ZG/)
+.tr
+.td{height: 13svh}
+.image(assets/youtube.svg :10svh)
+.td{text-align: left; padding-left: 5svw;}
+.{color:blue}(@)[golangzg](https://www.youtube.com/@golangzg)
+.tr
+.td
+.image(assets/github.svg :13svh)
+.td{text-align: left; padding-left: 5svw;}
+🆕 [github.com/golang-zg/meetups](https://github.com/golang-zg/meetups/blob/master/talks.md) ⭐
+.tr
+.td
+.image(assets/Bluesky_Logo.svg :13svh)
+.td{text-align: left; padding-left: 5svw;}
+.{color:blue}(@)[golangzg.bsky.social](https://bsky.app/profile/golangzg.bsky.social)
+.tr
+.td{height: 13svh}
+.image(assets/slack-new-logo.svg :12svh)
+.td{text-align: left; padding-left: 5svw;}
+[invite.slack.golangbridge.org](https://invite.slack.golangbridge.org/?fbclid=IwAR35p7rEaNkowXDxX8RvmWDvyhoAslx2QskpBBnHlVdKCXvRpCoxePMmHnA)
+.table.end
+.css.end
+
+.===============================================================================

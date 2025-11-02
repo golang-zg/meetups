@@ -1,0 +1,290 @@
+.===============================================================================
+.===============================================================================
+
+.slide.title(Go 1.25)
+
+.css{margin-left:7svw; margin-top:4svw; }
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**Go 1.25**)
+.css.end
+
+.slide.background(assets/golang-back.png)
+
+.===============================================================================
+.TITLE{Container-aware `GOMAXPROCS`}
+
+#space#
+
+- The default behavior of the `GOMAXPROCS` has changed.
+  - In prior versions of Go, `GOMAXPROCS` defaults to runtime.NumCPU.
+  - Go 1.25 introduces two changes:
+    - On Linux, the runtime considers the CPU bandwidth limit of the cgroup containing the process.
+    - **periodically** updates `GOMAXPROCS`
+
+- disabled if `GOMAXPROCS` is set manually
+  - `GOMAXPROCS` environment variable
+  - call to `runtime.GOMAXPROCS`
+
+
+.===============================================================================
+.TITLE{New experimental garbage collector}
+
+#space#
+
+- improves the performance of marking and scanning small objects through better locality and CPU scalability.
+- expected somewhere between a `10—40%` reduction in garbage collection overhead in real-world programs that heavily use the garbage collector.
+
+.===============================================================================
+.TITLE{testing/synctest package}
+
+.slide.font-size(4.1svh)
+
+- Runs a test function in an isolated `bubble`. Within the bubble, time is virtualized
+  - clock moves instantaneously if all goroutines in the bubble are blocked
+- The Wait function waits for all goroutines in the current bubble to block.
+  ```go
+  func TestWait(t *testing.T) {
+      synctest.Test(t, func(t *testing.T) {
+          x := 0
+          go func() {
+              x = 1
+              time.Sleep(time.Second)
+              // ...
+          }()
+
+          synctest.Wait()
+      })
+  }
+  ```
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+#space#
+
+- [go.dev/blog/jsonv2-exp](https://go.dev/blog/jsonv2-exp)
+- [antonz.org/go-json-v2/](https://antonz.org/go-json-v2/)
+- new packages are available:
+  - new `encoding/json/v2`
+  - new `encoding/json/jsontext`
+
+- when the “jsonv2” GOEXPERIMENT is enabled `encoding/json` package uses the new JSON implementation
+- `encoding` performance is at parity between the implementations
+- `decoding` is substantially faster in the new one
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+```go
+func Marshal(in any, opts ...Options) (out []byte, err error)
+func MarshalWrite(out io.Writer, in any, opts ...Options) error
+func MarshalEncode(out *jsontext.Encoder, in any, opts ...Options) error
+
+func Unmarshal(in []byte, out any, opts ...Options) error
+func UnmarshalRead(in io.Reader, out any, opts ...Options) error
+func UnmarshalDecode(in *jsontext.Decoder, out any, opts ...Options) error
+```
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.slide.font-size(4.7svh)
+
+- json.`MarshalToFunc`
+  ```go
+  boolMarshaler := json.MarshalToFunc(
+      func(enc *jsontext.Encoder, val bool) error {
+          if val {
+              return enc.WriteToken(jsontext.String("enabled"))
+          }
+          return enc.WriteToken(jsontext.String("disabled"))
+      },
+  )
+  ```
+
+```go
+data, err := json.Marshal(vals, json.WithMarshalers(boolMarshaler))
+```
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+- json.`MarshalToFunc`
+  ```go
+  boolStrMarshaler := json.MarshalToFunc(
+      func(enc *jsontext.Encoder, val string) error {
+        if val == "enabled" || val == "true" {
+            return enc.WriteToken(jsontext.String("true"))
+        }
+        if val == "disabled" || val == "false" {
+            return enc.WriteToken(jsontext.String("false"))
+        }
+        return json.SkipFunc
+      },
+  )
+  ```
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . age)
+
+.block.path(example/jsonv2).source(age.go).show(9:11)
+.block.path(example/jsonv2).source(age.go).show(14:19)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . byte-notag)
+
+.block.path(example/jsonv2).source(byte.go).show(8:11)
+.block.path(example/jsonv2).source(byte.go).show(25:27)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . byte-array)
+
+.block.path(example/jsonv2).source(byte.go).show(20:22)
+.block.path(example/jsonv2).source(byte.go).show(71:77)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . byte-base64)
+
+.block.path(example/jsonv2).source(byte.go).show(12:14)
+.block.path(example/jsonv2).source(byte.go).show(51:57)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . byte-hex)
+
+.block.path(example/jsonv2).source(byte.go).show(16:18)
+.block.path(example/jsonv2).source(byte.go).show(61:67)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . null-new)
+
+.block.path(example/jsonv2).source(nulls.go).show(8:11)
+.block.path(example/jsonv2).source(nulls.go).show(24:28)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . null-old)
+
+.block.path(example/jsonv2).source(nulls.go).show(8:11)
+.block.path(example/jsonv2).source(nulls.go).show(32:36)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+.cast.path(example/jsonv2).env(GOEXPERIMENT=jsonv2).run(go run . multiline)
+
+.block.path(example/jsonv2).source(type.go).show(3:12)
+.block.path(example/jsonv2).source(main.go).show(57:60)
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+```go
+type Durations struct {
+  A time.Duration `json:"dob,format:units"`
+  B time.Duration `json:"time,format:sec"`
+  C time.Duration `json:"time,format:nano"`
+  C time.Duration `json:"time,format:iso8601"`
+}
+```
+
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+```go
+type Age struct {
+  DOB      time.Time `json:"dob     ,format:DateOnly"`
+  Time     time.Time `json:"time    ,format:TimeOnly"`
+  DateTime time.Time `json:"datetime,format:2006/01/02 15:04"`
+  RFC      time.Time `json:"datetime,format:RFC3339"`
+}
+```
+.===============================================================================
+.TITLE{experimental encoding/json/v2}
+
+```go
+type Data struct {
+  List1 []int          `json:"list,format:emitnull"`
+  List2 []int          `json:"list,format:emitnull"`
+
+  Map1  map[string]int `json:"map,format:emitempty"`
+  Map2  map[string]int `json:"map,format:emitempty"`
+}
+```
+.===============================================================================
+.TITLE{sync.WaitGroup}
+
+#space#
+
+```go
+wg.Add(1)
+go func() {
+    defer wg.Done()
+    // code to run
+}()
+
+wg.Go(func() {
+    // code to run
+})
+
+wg.Wait()
+```
+.===============================================================================
+.TITLE{go mod - ignore}
+
+#space#
+
+```go
+ignore (
+  ./ui/node_modules
+  static
+)
+```
+
+#space#
+
+```shell
+go test ./...
+go install ./...
+```
+
+#space#
+
+.===============================================================================
+.TITLE{Root}
+
+```go
+os.OpenInRoot(dir, name)
+```
+
+```go
+os.Root(dir)
+```
+- Chmod, Chown, Chtimes, Lchown, Link, MkdirAll, ReadFile, Readlink, RemoveAll, Rename, Symlink, WriteFile
+
+.===============================================================================
+.TITLE{other}
+
+.slide.font-size(4.2svh)
+
+- slices
+  - The compiler can now allocate the backing store for slices on the stack in more situation.
+- log/slog
+  - [GroupAttrs](https://pkg.go.dev/log/slog@master#GroupAttrs) creates a group Attr from a slice of Attr values.
+- CrossOriginProtection
+  - implements protections against Cross-Site Request Forgery (CSRF) by rejecting non-safe cross-origin browser requests.
+- go doc -http
+  - starts a web server to serve documentation pages for Go packages.
+- reflect.TypeAssert
+  -  permits converting a Value directly to a Go value of the given type
+     (avoids interface)
