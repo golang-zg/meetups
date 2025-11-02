@@ -1,0 +1,35 @@
+.===============================================================================
+.===============================================================================
+
+.slide.title(Go News - September 2025)
+
+.css{margin-left:7svw; margin-top:4svw; }
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**Go**)
+.css.end
+
+.slide.background(assets/golang-back.png)
+
+.===============================================================================
+.TITLE{GopherCon UK 2025}
+
+#space#
+
+[www.youtube.com/playlist?list=...](https://www.youtube.com/playlist?list=PLDWZ5uzn69ewrYyHTNrXlrWVDjLiOX0Yb)
+
+#space#
+
+.raw
+<iframe width="640" height="400" src="https://www.youtube.com/embed/videoseries?si=l4bvZ9H7cbmHiNCw&amp;list=PLDWZ5uzn69ewrYyHTNrXlrWVDjLiOX0Yb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+.raw.end
+
+.css{right:1svw; bottom:20svh; position: absolute; }
+.image(https://www.gophercon.co.uk/assets/images/facts.svg :60svh)
+.css.end
+
+.===============================================================================
+.TITLE{Go Developer Survey 2025}
+
+#space#
+
+- How has Go has been working out for you?
+  - [go.dev/blog/survey2025-announce](https://go.dev/blog/survey2025-announce)
