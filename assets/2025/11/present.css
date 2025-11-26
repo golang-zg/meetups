@@ -13,13 +13,12 @@ hr {
     background-color: #5DC9E2;
 }
 
-
 .back-intro {
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
 
   --s: 30svh; /* control the size*/
-  --c1: rgb(93, 102, 210);
-  --c2: rgb(106, 115, 218);
+  --c1: #00ADD8;
+  --c2: #0996b9;
 
   --g1:/calc(2*var(--s)) calc(2*var(--s))
        radial-gradient(at 100% 0,var(--c2) 17.5%,#0000 18%);

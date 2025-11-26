@@ -1,0 +1,46 @@
+.===============================================================================
+.center
+.css{
+  font-size: 18svh;
+  text-shadow: 0 0 3px #FFFFFF, 0 0 15px rgba(255, 255, 255, 1);
+  margin-top: 10svh;
+}
+**GoTalks 25.11.2025**
+
+.css.end
+.center.end
+
+.slide.background(assets/golang-back.png)
+.===============================================================================
+.TITLE{How to reach us}
+
+#space#
+.css{text-align: center; display: flex;  justify-content: center; align-items: center;}
+.table
+.tr
+.td
+.image(assets/meetup.png :13svh)
+.td{text-align: left; padding-left: 5svw;}
+[meetup.com/Golang-ZG](https://www.meetup.com/Golang-ZG/)
+.tr
+.td{height: 13svh}
+.image(assets/youtube.svg :10svh)
+.td{text-align: left; padding-left: 5svw;}
+.{color:blue}(@)[golangzg](https://www.youtube.com/@golangzg)
+.tr
+.td
+.image(assets/github.svg :13svh)
+.td{text-align: left; padding-left: 5svw;}
+[github.com/golanghr/golangzg](https://github.com/golanghr/golangzg/blob/master/talks.md)
+.tr
+.td
+.image(assets/Bluesky_Logo.svg :13svh)
+.td{text-align: left; padding-left: 5svw;}
+.{color:blue}(@)[golangzg.bsky.social](https://bsky.app/profile/golangzg.bsky.social)
+.tr
+.td{height: 13svh}
+.image(assets/slack-new-logo.svg :12svh)
+.td{text-align: left; padding-left: 5svw;}
+[invite.slack.golangbridge.org](https://invite.slack.golangbridge.org/?fbclid=IwAR35p7rEaNkowXDxX8RvmWDvyhoAslx2QskpBBnHlVdKCXvRpCoxePMmHnA)
+.table.end
+.css.end

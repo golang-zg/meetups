@@ -1,0 +1,11 @@
+.===============================================================================
+.TITLE{Thank you!}
+.center
+.css{
+  font-size: 18svh;
+  text-shadow: 0 0 3px #FFFFFF, 0 0 15px rgba(45, 111, 168, 1);
+  margin-top: 10svh;
+}
+**Thank you for your attention!**   😊
+.css.end
+.center.end

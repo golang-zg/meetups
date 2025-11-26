@@ -1,0 +1,275 @@
+.===============================================================================
+.TITLE{Linters}
+
+- golangci-lint
+  - [golangci-lint.run](https://golangci-lint.run/)
+  - Fast Go linters runner
+  - Supports multiple linters
+  - Highly configurable
+  - configuration file: `.golangci.yml`
+  - memory inefficient
+  - installations is not native `go install`
+    - each new go version does nto work until golangci-lint releases a new version
+.===============================================================================
+.TITLE{Linters}
+- staticcheck
+  - [staticcheck.io](https://staticcheck.io/)
+  - A state-of-the-art linter for Go
+  - Focuses on code correctness, performance, and style issues
+  - Can be used standalone or integrated into other tools
+  - Regularly updated with new checks and improvements
+  - installation: `go install honnef.co/go/tools/cmd/staticcheck@latest`
+.===============================================================================
+.TITLE{Linters}
+- revive
+  - [revive.run](https://revive.run/)
+  - Fast, configurable, extensible linter for Go
+  - Focuses on code style and best practices
+  - Highly configurable with custom rules
+  - installation: `go install github.com/mgechev/revive@latest`
+  - does not have issues with memory like golangci-lint
+  - does not have issue with new go versions
+.===============================================================================
+.TITLE{Linters}
+
+- betteralign
+  - [github.com/dkorunic/betteralign](https://github.com/dkorunic/betteralign)
+  - Make your Go programs use less memory (maybe)
+  - Aligns struct fields to minimize memory usage due to padding
+  - installation: `go install github.com/dkorunic/betteralign@latest`
+  - usage: `betteralign ./...`
+    - automatic modifications: `betteralign -apply ./...`
+  - uses DST and not AST
+.===============================================================================
+.TITLE{Formating}
+
+- gofumpt
+  - [github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)
+  - A stricter gofmt
+- modernize
+  - `go run golang.org/x/tools/gopls/internal/analysis/modernize/cmd/ modernize@latest -fix -test ./...`
+- betteralign
+  - also does formatting fixes
+.===============================================================================
+.TITLE{Security}
+
+- go-licenses
+  - [github.com/google/go-licenses](https://github.com/google/go-licenses)
+  - Analyze and display the licenses of Go packages
+  - installation: `go install github.com/google/go-licenses/v2@latest`
+  - ```
+    go-licenses report --ignore "$PROJECT" \
+    --ignore "github.com/golang/freetype/raster" .
+    ```
+  - check allowed licenses:
+    ```
+    go-licenses check --allowed_licenses="$ALLOWED_LICENSES" \
+    --ignore "$PROJECT" \
+    --ignore "github.com/oktalz/present" .
+    ```
+
+.===============================================================================
+.TITLE{Security}
+
+- govulncheck
+  - [pkg.go.dev/golang.org/x/vuln/cmd/govulncheck](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
+  - Check your Go programs for known vulnerabilities
+  - installation: `go install golang.org/x/vuln/cmd/govulncheck@latest`
+  - usage:
+    - `govulncheck ./...`
+    - `govulncheck -show verbose ./...`
+
+.===============================================================================
+.TITLE{Testing}
+
+- gotestsum
+  - [github.com/gotestyourself/gotestsum](https://github.com/gotestyourself/gotestsum)
+  - A test runner that generates JUnit XML and more readable output
+  - installation: `go install github.com/gotestyourself/gotestsum@latest`
+  - `gotestsum --hide-summary=output --format-hide-empty-pkg -- ./...`
+```
+github.com/oktalz/present/parsing:
+ ✅ Find data (0.00s)
+ ✅ Find data use case 1 (0.00s)
+ ✅ Find data use case 2 (0.00s)
+
+ DONE 30 tests in 2.478s
+```
+.===============================================================================
+.TITLE{Tools}
+
+- yq
+  - [github.com/mikefarah/yq](https://github.com/mikefarah/yq)
+  - Command-line YAML processor
+  - installation: `go install github.com/mikefarah/yq/v4@latest`
+  - can work with YAML, JSON, XML, CSV, and TOML files
+
+.===============================================================================
+.TITLE{Tools}
+
+- mlr
+  - [github.com/johnkerl/miller](https://github.com/johnkerl/miller)
+  - A command-line tool for processing CSV, TSV, and JSON files
+  - installation: `go install github.com/johnkerl/miller/v6/cmd/mlr@latest`
+  - provides powerful data manipulation capabilities similar to awk, sed, and cut
+
+.===============================================================================
+.TITLE{Tools}
+
+- taskfile
+  - [https://taskfile.dev/](https://taskfile.dev/)
+  - A simple task runner / build tool that aims to be simpler and easier to use than Make
+  - installation: `go install github.com/go-task/task/v3/cmd/task@latest`
+  - usage: create a `taskfile.yml` and run `task <task-name>`
+
+.===============================================================================
+.TITLE{Development Utilities}
+
+- air
+  - [https://github.com/air-verse/air](https://github.com/air-verse/air)
+  - Live reload for Go applications
+  - installation: `go install github.com/air-verse/air@latest`
+  - usage:
+    - run `air` in the project directory
+    - `air --build.cmd "go build -o bin/api cmd/run.go" --build.bin "./bin/api"`
+  - automatically rebuilds and restarts the application on file changes
+
+.===============================================================================
+.TITLE{Generation of code}
+
+- go-method-gen
+  - [github.com/haproxytech/go-method-gen](https://github.com/haproxytech/go-method-gen)
+  - A tool to generate boilerplate code for Go methods
+  - installation: `go install github.com/haproxytech/go-method-gen@latest`
+  - generates Equal and Diff methods for structs (Merge, Clone is planned)
+  - allows customization
+
+.===============================================================================
+.TITLE{Docker & Kubernetes}
+
+- lazydocker
+  - A simple terminal UI for both docker and docker-compose, written in Go
+  - installation: `go install github.com/jesseduffield/lazydocker@latest`
+  - provides an easy way to manage Docker containers, images, volumes, and networks from the terminal
+  - supports viewing logs, stats, and executing commands within containers
+
+.===============================================================================
+.TITLE{Docker & Kubernetes}
+
+- k9s
+  - A terminal UI to interact with your Kubernetes clusters
+  - installation: `go install github.com/derailed/k9s@latest`
+  - provides a terminal-based interface for managing and monitoring Kubernetes clusters
+  - supports various Kubernetes resources and operations
+
+.===============================================================================
+.TITLE{Docker & Kubernetes}
+
+- kind
+  - [kind.sigs.k8s.io](https://kind.sigs.k8s.io/)
+  - Kubernetes IN Docker - a tool for running local Kubernetes clusters using Docker container nodes
+  - installation: `go install sigs.k8s.io/kind@latest`
+  - useful for testing Kubernetes applications locally
+  - supports multi-node clusters
+
+.===============================================================================
+.TITLE{Docker & Kubernetes}
+
+- k0s
+  - [k0sproject.io](https://k0sproject.io/)
+  - `curl -sSf https://get.k0s.sh | sudo sh`
+  - A zero-friction Kubernetes distribution
+  - provides a simple way to set up and manage Kubernetes clusters
+  - supports single-node and multi-node deployments
+
+.===============================================================================
+.TITLE{Go Obfuscation}
+
+- garble
+  - [github.com/burrowers/garble](https://github.com/burrowers/garble)
+  - A tool to obfuscate Go binaries
+  - installation: `go install mvdan.cc/garble@latest`
+  - usage: `garble build` instead of `go build`
+  - obfuscates symbol names and strings in the binary to make reverse engineering more difficult
+
+.===============================================================================
+.TITLE{Go CI}
+
+- act
+  - [github.com/nektos/act](https://github.com/nektos/act)
+  - installation: `go install github.com/nektos/act@latest`
+  - A tool to run GitHub Actions locally
+  - allows testing and debugging GitHub Actions workflows without pushing to GitHub
+  - supports most GitHub Actions features and syntax
+  - usage: `act -j <job-name>`
+
+.===============================================================================
+.TITLE{Go Release}
+
+- goreleaser
+  - [goreleaser.com](https://goreleaser.com/)
+  - A tool to automate the release process of Go projects
+  - installation: `go install github.com/goreleaser/goreleaser/v2@latest`
+  - usage:
+    - `goreleaser release --snapshot --clean`
+    - `goreleaser release`
+  - supports building, packaging, and publishing Go binaries to various platforms and package managers
+  - Works with Go, Rust, Zig, Bun, Deno
+
+.===============================================================================
+.TITLE{Go Integrated Tools}
+
+- gopls
+  - [pkg.go.dev/golang.org/x/tools/gopls](https://pkg.go.dev/golang.org/x/tools/gopls)
+  - The official Go language server
+  - Provides IDE features like auto-completion, go-to-definition, and refactoring
+  - installation: `go install golang.org/x/tools/gopls@latest`
+  - usually integrated into editors like VSCode, Vim, etc.
+.===============================================================================
+.TITLE{Go Integrated Tools}
+
+- delve
+  - [github.com/go-delve/delve](github.com/go-delve/delve)
+  - A powerful debugger for Go programs
+  - installation: `go install github.com/go-delve/delve/cmd/dlv@latest`
+  - supports various debugging modes: local, remote, headless
+  - can be integrated with IDEs for a better debugging experience
+.===============================================================================
+.TITLE{Go Integrated Tools}
+
+- pprof
+  - A tool for profiling Go programs
+  - Built into the standard library
+  - usage: import `_ "net/http/pprof"` and start an HTTP server
+  - access profiles via `http://localhost:6060/debug/pprof/`
+  - can generate CPU, memory, goroutine, and block profiles
+  - visualize profiles using `go tool pprof`
+.===============================================================================
+.TITLE{Go Integrated Tools}
+
+- `go test`
+  - A built-in tool for measuring code coverage in Go tests
+  - usage: `go test -coverprofile=coverage.out ./...`
+  - view coverage report using `go tool cover -html=coverage.out`
+  - helps identify untested parts of the codebase
+
+.===============================================================================
+.TITLE{Go Integrated Tools}
+
+- `go doc -http`
+  - A built-in tool to serve Go documentation locally
+  - usage: `go doc -http`
+  - provides a web interface for browsing Go package documentation
+
+.===============================================================================
+.TITLE{Shameless self-promotion}
+
+- present
+  - [github.com/oktalz/present](https://github.com/oktalz/present)
+  - A Go application for creating presentations
+  - installation: `go install github.com/oktalz/present@latest`
+  - usage: `present` command to serve presentations locally
+  - supports markdown-like syntax for slides
+  - highly customizable with CSS and HTML
+
+.===============================================================================
