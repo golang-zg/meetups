@@ -1,6 +1,19 @@
 # Meetup Talks
 
+## 2026
+
+### **GoTalks 20.01.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312886578/)
+- **Go Templating & Code Generation**
+
+by [Tomas Espeleta](https://www.linkedin.com/in/tespeleta/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/01/Zagreb-GoTalks-Meetup-2026.01-public.pdf)
+
+
 ## 2025
+
+### **GoTalks 16.12.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312342829/)
+- **Go on Bare Metal**
+by [Bruno Banelli](https://www.linkedin.com/in/brunobanelli/)
+
 
 ### **GoTalks 25.11.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312084981/) )
 - **Go Tools**
