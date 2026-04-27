@@ -1,0 +1,11 @@
+applicant:
+  celValidations:
+    - name: "email_basic"
+      expression: >
+        email.contains("@")
+      message: "Email must contain @"
+
+    - name: "percentage_passed_check"
+      expression: >
+        percentagePassed > 50 && percentagePassed <= 100
+      message: "Percentage passed must be 50 < x <= 100"

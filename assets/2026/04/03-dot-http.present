@@ -1,0 +1,343 @@
+.===============================================================================
+.===============================================================================
+.slide.title(http)
+
+.css{margin-left:7svw; margin-top:4svw; }
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**.http**)
+.css.end
+
+
+.slide.background(assets/golang-back.png)
+
+.===============================================================================
+.TITLE{Validation}
+
+[github.com/oktalz/dot-http](https://github.com/oktalz/dot-http)
+
+tool for executing `.http` files
+
+#space#
+
+This project includes two components:
+
+- **CLI tool** (`dot-http`) — run `.http` files from the terminal
+- **VSCode extension** — run `.http` files directly inside VS Code
+  - see [dot-http VSCode extension](https://marketplace.visualstudio.com/items?itemName=ZlatkoBratkovic.dot-http)
+
+.===============================================================================
+.TITLE{CLI}
+
+Installation:
+```bash
+go install github.com/oktalz/dot-http@latest
+```
+
+#space#
+
+Usage:
+```bash
+dot-http [flags] <file.http> [request-name]
+```
+
+.===============================================================================
+.TITLE{CLI}
+
+.slide.font-size(4.5svh)
+
+| Flag | Description |
+| --- | --- |
+| `-v` | Print version and exit |
+| `-V` | Verbose: print request details before sending |
+| `-H` | Print response headers only (no body) |
+| `-B` | Print response body only (no headers) |
+| `-o <file>` | Save response body to a file |
+| `--env <name>` | Load `<name>.env` instead of `.env` |
+| `--timeout <dur>` | Request timeout, e.g. `30s`, `1m` (default: none) |
+| `--no-follow` | Do not follow redirects |
+| `--session <file>` | Load/save cookies from/to a JSON session file |
+| `--junit <file>` | Write JUnit XML test report to file |
+
+
+.===============================================================================
+.TITLE{format - file structure}
+
+- Requests are separated by `###`.
+- Each block can have headers
+
+```txt
+GET https://api.example.com/users
+
+###
+
+POST https://api.example.com/users
+Content-Type: application/json
+
+{
+    "name": "John"
+}
+```
+
+.===============================================================================
+.TITLE{format - variables}
+
+**File variables** — defined at the top of the `.http` file:
+
+```txt
+@baseUrl = https://api.example.com
+
+###
+GET {{baseUrl}}/users
+```
+
+**Environment variables** — from system environment and a `.env` file
+
+```txt
+API_URL=https://api.example.com
+TOKEN="secret"
+```
+
+```txt
+GET {{API_URL}}/users
+Authorization: Bearer {{TOKEN}}
+```
+
+.===============================================================================
+.TITLE{format - variables}
+
+### Multiple environments
+
+Use `--env` to load a named environment file:
+
+```bash
+dot-http --env prod api.http        # loads prod.env
+dot-http --env staging api.http     # loads staging.env
+```
+
+.===============================================================================
+.TITLE{format - request chaining}
+
+.slide.font-size(4svh)
+
+Name a request with `# @name` and reference its response in requests using dot notation:
+
+```txt
+# @name = login
+POST https://api.example.com/auth
+Content-Type: application/json
+
+{"username": "user", "password": "pass"}
+
+###
+
+# @requires = login
+GET https://api.example.com/profile
+Authorization: Bearer {{login.body.token}}
+```
+
+Available response fields:
+
+- `{{name.body.field}}` — JSON response body (dot notation for nested fields)
+- `{{name.headers.Content-Type}}` — response headers
+
+.===============================================================================
+.TITLE{format - parameterized dependencies}
+
+Pass arguments to dependencies to reuse the same request with different parameters:
+
+```txt
+# @name = getUser
+GET https://api.example.com/users/{{id}}
+
+###
+
+# @requires = getUser(id=1)
+# @requires = getUser(id=2)
+GET https://api.example.com/compare
+```
+
+.===============================================================================
+.TITLE{format - assertions & testing}
+
+Use `# @expect` to assert the response status code, and `# @assert` for header/body checks. Exit code is non-zero on failure — suitable for CI.
+
+```txt
+# @name = createUser
+# @expect 201
+# @assert body.name == John
+# @assert header.Content-Type contains application/json
+POST https://api.example.com/users
+Content-Type: application/json
+
+{"name": "John"}
+```
+
+Supported operators: `==`, `!=`, `contains`, `!contains`
+
+.===============================================================================
+.TITLE{format - JUnit XML reports}
+
+
+- Generate a JUnit-compatible XML report for CI/CD systems
+  - GitHub Actions, Jenkins, etc.
+
+```bash
+dot-http --junit report.xml api.http
+```
+
+.===============================================================================
+.TITLE{format - GraphQL}
+
+Set `Content-Type: application/graphql` and write the query as the body
+- it will be automatically wrapped as `{"query": "..."}`
+
+```txt
+POST https://api.example.com/graphql
+Content-Type: application/graphql
+
+{
+  users {
+    id
+    name
+  }
+}
+```
+.===============================================================================
+.TITLE{format - cookies}
+
+Persist cookies between runs using a session file:
+
+```bash
+dot-http --session session.json api.http login
+dot-http --session session.json api.http profile
+```
+
+- Cookies from the `login` request will be saved to `session.json` and loaded for the `profile` request.
+
+
+.===============================================================================
+.TITLE{format - imports}
+
+.slide.font-size(4svh)
+
+Split requests across files using `@import`.
+- Imported files make their named requests and variables available to the current file.
+
+```txt
+@import = auth.http
+@import = helpers/users.http
+
+###
+# @requires = login
+GET https://api.example.com/profile
+Authorization: Bearer {{login.body.token}}
+```
+
+- Paths are relative to the importing file's directory
+- Multiple `@import` directives are supported
+- Imports are recursive (imported files can import other files)
+- Cyclic imports are detected and safely skipped
+
+.===============================================================================
+.TITLE{format - OAuth2}
+
+### OAuth2
+
+Declare OAuth2 directives as per-request comments.
+- The token is acquired automatically and injected as `Authorization: Bearer <token>`.
+- Tokens are cached with expiry so re-runs don't re-authenticate.
+
+#space#
+
+Types:
+- Client Credentials (machine-to-machine)
+- Authorization Code + PKCE (browser flow)
+- Device Code Flow
+
+
+.===============================================================================
+.TITLE{format - OAuth2}
+
+### Client Credentials (machine-to-machine)
+
+```txt
+# @oauth2-grant = client_credentials
+# @oauth2-token-url = https://auth.example.com/oauth/token
+# @oauth2-client-id = {{CLIENT_ID}}
+# @oauth2-client-secret = {{CLIENT_SECRET}}
+# @oauth2-scope = read write
+GET https://api.example.com/resource
+```
+
+.===============================================================================
+.TITLE{format - OAuth2}
+
+#### Authorization Code + PKCE (browser flow)
+
+- Spins up a local server, opens the browser, captures the code, exchanges it for a token.
+
+#space#
+
+```txt
+# @oauth2-grant = authorization_code
+# @oauth2-token-url = https://auth.example.com/oauth/token
+# @oauth2-auth-url = https://auth.example.com/oauth/authorize
+# @oauth2-client-id = {{CLIENT_ID}}
+# @oauth2-scope = openid profile
+# @oauth2-redirect-port = 9876
+GET https://api.example.com/resource
+```
+
+.===============================================================================
+.TITLE{format - OAuth2}
+
+#### Device Code Flow
+- Prints the verification URL and user code, then polls until approved.
+
+#space#
+
+```txt
+# @oauth2-grant = device_code
+# @oauth2-token-url = https://auth.example.com/oauth/token
+# @oauth2-device-url = https://auth.example.com/oauth/device/code
+# @oauth2-client-id = {{CLIENT_ID}}
+# @oauth2-scope = read
+GET https://api.example.com/resource
+```
+
+.===============================================================================
+.TITLE{format - OAuth2}
+
+#### Token caching
+
+Add `@oauth2-cache` at the file level to persist tokens across runs:
+
+#space#
+
+```txt
+@oauth2-cache = .tokens.json
+```
+
+.===============================================================================
+.TITLE{examples}
+
+.slide.font-size(4svh)
+
+```bash
+# Run a specific named request (and its dependencies)
+dot-http api.http login
+
+# Verbose: show request details before sending
+dot-http -V api.http login
+
+# Headers only
+dot-http -H api.http login
+
+# Body only (useful for piping to jq, etc.)
+dot-http -B api.http login | jq .
+
+# Save response body to file
+dot-http -o response.json api.http
+
+# Set a request timeout
+dot-http --timeout 10s api.http slow_request
+```

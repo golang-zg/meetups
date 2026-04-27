@@ -1,0 +1,259 @@
+.===============================================================================
+.===============================================================================
+.slide.title(Go 1.25)
+
+.css{margin-left:7svw; margin-top:4svw; }
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**CEL**)
+.css.end
+
+.css{margin-left:11svw; margin-top:-4svw;  }
+.{font-size: 2em;text-shadow: 0 0 2px #FFFFFF, 0 0 15px #000000;}(**Common Expression Language**)
+.css.end
+
+.slide.background(assets/golang-back.png)
+
+.===============================================================================
+.TITLE{Validation types - CEL}
+
+- [cel.dev](https://cel.dev/)
+- ideal for performance-critical applications because it was designed to evaluate safely and quickly (nanoseconds to microseconds) with predictible costs
+- CEL is designed for expressive, logic-based constraints that go beyond what OpenAPI keywords like `minimum`, `maximum`, `enum` or `pattern` can express.
+- CEL is a small, embeddable expression language used to write boolean validation rules.
+  - Kubernetes uses OpenAPI v3 structural schemas for CRDs, but adds CEL as an additional validation mechanism for complex rules.
+
+.===============================================================================
+.TITLE{Validation types - CEL - example}
+
+.block.source(validation.yaml).path(example/cel-simple)
+
+.===============================================================================
+.TITLE{Validation types - CEL - example}
+
+.block.source(main.go).path(example/cel-simple).show(50:58)
+
+.===============================================================================
+.TITLE{Validation types - CEL - example}
+
+.slide.font-size(4.5svh)
+.block.source(main.go).path(example/cel-simple).show(63:77)
+
+.===============================================================================
+.TITLE{Validation types - CEL - example}
+
+#space#
+
+```go
+  applicant := Applicant{
+    Email:            "test@example.com",
+    PercentagePassed: 50,
+  }
+```
+output:
+```txt
+  Validation failed:
+  - Percentage passed must be 50 < x <= 100
+```
+.===============================================================================
+.TITLE{Validation types - CEL - advanced example}
+
+- OpenAPI v3 + CEL
+  - Kubernetes CRD validation
+  ```go
+  // +kubebuilder:validation:XValidation:rule= \
+  //   "!has(self.spec.config.default_path)", \
+  //   message="spec.config.default_path is set by ..."
+  ```
+  ```go
+  type TCPService struct {
+    Name string `json:"name"`
+    // +kubebuilder:validation:Maximum=65535
+    // +kubebuilder:validation:Minimum=1
+    Port int `json:"port"`
+  }
+  ```
+.===============================================================================
+.TITLE{Validation types - CEL - advanced example}
+
+- OpenAPI v3 + CEL
+  - Kubernetes CRD validation
+  ```go
+  // +kubebuilder:validation:Required
+  Name     string          `json:"name"`
+  ```
+  ```go
+  // +kubebuilder:validation:Enum=RSA;ECDSA;
+  Keytype string `json:"keytype,omitempty"`
+  ```
+  ```go
+  // +kubebuilder:validation:Pattern=`^[^\s]+$`
+  ID *string `json:"id,omitempty"`
+  ```
+.===============================================================================
+.TITLE{Validation types - CEL - advanced example}
+
+#space#
+
+- normal way:
+
+```mermaid
+flowchart LR
+
+	n1["User"]
+	n2["APP"]
+	n1
+	n2
+	n3@{ shape: "hex", label: "Validation" }
+	n1 --- n3
+	n3 --- n2
+```
+
+.===============================================================================
+.TITLE{Validation types - CEL - advanced example}
+
+- *No two companies are alike*
+- Administrator sets rules, and users use the system according to those rules.
+- Validation logic is decoupled from the application code and can be updated.
+
+.css{width:80%}
+```mermaid
+flowchart LR
+	n1["User"]
+	n2["APP"]
+	n1
+	n2
+	n3@{ shape: "hex", label: "Validation" }
+	n1
+	n3
+	n3 --- n2
+	n4@{ shape: "stadium", label: "Admin" }
+	n4
+	n3
+	n5@{ shape: "circle", label: "Use" }
+	n6@{ shape: "circle", label: "Set" }
+	n1 --- n5
+	n5 --- n3
+	n4 --- n6
+	n6 --- n3
+```
+.css.end
+
+.===============================================================================
+.TITLE{Validation types - CEL - real world}
+
+- [github.com/haproxytech/kubernetes-ingress](https://github.com/haproxytech/kubernetes-ingress)
+- Kubernetes CRD validation with OpenAPI v3 + CEL
+  - Further customisation of what user can do was needed
+  - [documentation/annotations-custom.md](https://github.com/haproxytech/kubernetes-ingress/blob/860bb756163b66f2507b72a8f839196f7f0cc68e/documentation/annotations-custom.md)
+
+.===============================================================================
+.TITLE{Validation types - CEL - real world}
+
+.slide.font-size(4.8svh)
+
+- Have predefined types of data (duration, int, uint, bool, string, float, json)
+- Have predefined scopes (e.g., `frontend`, `backend`, `specific backend`, ...)
+- Predefined template variables (e.g., `{{.BACKEND}}`, `{{.NAMESPACE}}`, `{{.INGRESS}}`, `{{.SERVICE}}`, `{{.POD_NAME}}`, `{{.POD_NAMESPACE}}`, `{{.POD_IP}}`)
+.css{width:99%}
+```mermaid
+flowchart LR
+	n1["User"]
+	n2["APP"]
+	n1
+	n2
+	n3@{ shape: "hex", label: "Validation" }
+	n1
+	n3
+	n3 --- n2
+	n4@{ shape: "stadium", label: "Admin" }
+	n4
+	n3
+	n5@{ shape: "circle", label: "Use" }
+	n6@{ shape: "circle", label: "Set" }
+	n1 --- n5
+	n5 --- n3
+	n4 --- n6
+	n6
+	n3
+	n7@{ shape: "hex", label: "Validation for Rules" }
+	n6 --- n7
+	n7
+	n7 --- n3
+```
+.css.end
+
+.===============================================================================
+.TITLE{Validation types - CEL - validation for rules}
+
+```yaml
+timeout-server: # name of annotation
+  section: all # can be all, fronted, backend (default)
+  namespaces: # we can limit namespace usage
+    - haproxy-controller
+    - default
+  resources: # limit usage to Service, Frontend or Backend names
+    - <name>
+  ingresses: # limit usage to specific ingresses
+    - <name>
+  order_priority: 100 # order of custom annotations in config.
+  template: "timeout server {{.}}" # template we can use
+  type: duration # expected data type for conversion
+  rule: "value > duration('42s') && value <= duration('42m')"
+```
+
+.===============================================================================
+.TITLE{Validation types - CEL - usage}
+
+- rule
+```yaml
+maxconn:
+  type: int
+  rule: "value >= 10 && value <= 1000000"
+```
+- usage
+```yaml
+backend.example.com/maxconn: "1000"
+```
+
+.===============================================================================
+.TITLE{Validation types - CEL - usage}
+
+.slide.font-size(3.3svh)
+
+- rule
+```yaml
+    timeouts:
+      section: backend
+      template: |
+          timeout server {{.server}}
+          timeout server-fin {{.server_fin}}
+          timeout tarpit {{.tarpit}}
+      type: json
+      rule: |
+        'server' in value && value.server.matches('^[0-9]+[smh]?$') &&
+        'server_fin' in value && value.server_fin.matches('^[0-9]+[smh]?$') &&
+        'tarpit' in value && value.tarpit.matches('^[0-9]+[smh]?$')
+```
+- usage
+```yaml
+backend.example.com/timeouts: |
+      {
+        "server": "42s",
+        "server_fin": "10s",
+        "tarpit": "5s"
+      }
+```
+.===============================================================================
+.TITLE{Validation types - CEL - source code}
+
+.slide.font-size(4.5svh)
+
+- [validations.go](https://github.com/haproxytech/kubernetes-ingress/blob/860bb756163b66f2507b72a8f839196f7f0cc68e/pkg/annotations/validators/validations.go)
+ - define rules and validation logic
+ - precomplile CEL expressions for performance
+ - validation and result function (templating)
+ - gracefully handle errors and provide feedback to users
+   - on validation failure, the user gets a clear error message indicating which rule was violated and why, helping them correct their input.
+   - there is no direct response if something goes wrong
+     - kubectl usage, but also, automation is often used for generation
+     - error appears in configuration file, making it easier for
+       administrators to identify and fix issues. (specific use-case)

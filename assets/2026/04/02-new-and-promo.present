@@ -1,0 +1,54 @@
+.===============================================================================
+.===============================================================================
+
+.slide.title(GoTalks 17.03.2026)
+
+.css{margin-top:4svw; }
+.center
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**Go news**)
+.center.end
+.css.end
+
+.slide.background(assets/golang-back.png)
+.===============================================================================
+.//.slide.title(QR code)
+.//.header
+.//.{position:absolute; margin-left: 1svw; top: 2svh!important}(.image(assets/1200px-Go_Logo_Blue.svg.png 12svw:))
+.//.css{font-size: 5svh; margin-bottom: 0px!important; margin-left: 14svw;}
+.//## GoTalks 28.04.2026
+.//.css.end
+.//<hr>
+.//.css{position: absolute; right:2svw; top:0.3svh; font-size: 5svh;}
+.//## [tvz.bratkovic.eu](https://meet.bratkovic.eu/)
+.//.css.end
+.//.header.end
+.//
+.//.center
+.//.image(assets/qr-code.png :80svh)
+.//.center.end
+.===============================================================================
+.TITLE{News}
+
+.slide.font-size(4svh)
+
+### Accepted
+- spec: generic methods for Go [go.dev/issue/77273](https://go.dev/issue/77273)
+  - allows defining methods on generic types, and using type parameters in method signatures
+- spec: direct reference to embedded fields in struct literals [go.dev/issue/9859](https://go.dev/issue/9859)
+    - allows struct literals to directly initialize fields of embedded structs without needing to specify the embedded struct's name
+- runtime/pprof,runtime: new goroutine leak profile [go.dev/issue/74609](https://go.dev/issue/74609)
+  -  change to the garbage collector that allows it detect some types of goroutine leaks (a.k.a. partial deadlocks in the academic community)
+
+.===============================================================================
+.TITLE{News}
+
+.slide.font-size(4svh)
+
+### Accepted
+- crypto/mldsa: new package [go.dev/issue/77626](https://go.dev/issue/77626)
+  - mldsa implements the post-quantum ML-DSA signature scheme specified in FIPS 204
+- spec: type inferred composite literals [go.dev/issue/12854](https://go.dev/issue/12854)
+  - allows composite literals to omit the type when it can be inferred from the context
+- cmd/go: change `go mod init` default go directive back to 1.N [go.dev/issue/77653](https://go.dev/issue/77653)
+
+.===============================================================================

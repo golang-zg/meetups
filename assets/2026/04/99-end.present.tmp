@@ -1,0 +1,16 @@
+.===============================================================================
+.slide.title(☕)
+
+.slide.font-size(30svh)
+
+.css{
+  padding-top: 20svh;
+}
+.center
+☕ 🧋 🍺
+.center.end
+.css.end
+
+.footer
+.div{font-size: 5svh; position: absolute; left: 91svw; bottom: 0svh;}(.image(assets/golang-zg-clean_462749266.png 8svw:))
+.footer.end

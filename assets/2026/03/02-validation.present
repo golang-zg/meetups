@@ -1,0 +1,69 @@
+.===============================================================================
+.===============================================================================
+.slide.title(Validation)
+
+.css{margin-left:7svw; margin-top:4svw; }
+.{font-size: 3.2em;text-shadow: 0 0 3px #FFFFFF, 0 0 15px #000000;}(**Validation**)
+.css.end
+
+.slide.background(assets/golang-back.png)
+
+.===============================================================================
+.TITLE{Validation}
+
+What “validation” means in Go?
+
+#space#
+
+Validation usually refers to checking that:
+- a struct’s fields meet constraints (length, range, format)
+- user input is safe and well‑formed
+- data is consistent before saving or processing
+
+#space#
+
+Official Support for Validation in Go:
+- No official validation package in the standard library
+
+.===============================================================================
+.TITLE{Validation types}
+
+- Manual validation
+  - This is the idiomatic, built-in way. Write your own checks.
+.===============================================================================
+.TITLE{Validation types - struct-tag}
+
+- Struct-tag validation
+  - Use struct tags to specify rules, and a library to enforce them
+  - [go-playground/validator](https://github.com/go-playground/validator) is a popular choice.
+  ```go
+  type User struct {
+      Email string `validate:"required,email"`
+      Age   int    `validate:"gte=18,lte=99"`
+  }
+  ```
+  - Custom validation functions
+  ```go
+  validate.RegisterValidation("is-something", func(fl validator.FieldLevel) bool {
+      return fl.Field().String() == "something"
+  })
+  ```
+
+.===============================================================================
+.TITLE{Validation types - OpenAPI}
+
+OpenAPI (v2 or v3) describes your API using Schema based rules. These rules define what is valid input/output for each endpoint.
+- language agnostic standard for API contracts.
+- code generators (e.g., go-swagger, [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen))
+- schema validators (e.g., go-openapi/validate)
+- runtime Schema validation
+These tools read your OpenAPI spec and automatically enforce constraints.
+
+.===============================================================================
+.TITLE{Validation types - OpenAPI}
+
+How this differs from manual validation?
+- declarative and standardized across languages, while manual validation is imperative and specific to your codebase.
+  - multiple libraries and tools available for many languages (both client and server-side).
+- often used for API input/output, while manual validation can be used anywhere in your code.
+- can be more comprehensive for API contracts, while manual validation is more flexible for complex logic.
