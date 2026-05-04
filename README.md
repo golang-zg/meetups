@@ -10,7 +10,7 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2026/03/dot-http
   ```
 - PDF documents with Go (revisited)
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en) ([Examples](assets/2026/04/pdf))
+by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en.pdf) ([Examples](assets/2026/04/pdf))
 
 ### History
 [Meetup Talks History](talks.md)
