@@ -11,7 +11,7 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2026/04/dot-http
   ```
 - PDF documents with Go (revisited)
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/)
+by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en) ([Examples](assets/2026/04/pdf))
 
 
 ### **GoTalks 17.03.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/313763055/)
