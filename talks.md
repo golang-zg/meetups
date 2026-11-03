@@ -2,6 +2,19 @@
 
 ## 2026
 
+### **GoTalks 16.06.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/315240678/)
+- **Go & Typescript** - Language comparison
+by [Tomislav Herman](https://www.linkedin.com/in/tomislavherman/) && [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/06/Go-Typescript.pdf)
+
+### **GoTalks 28.05.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/314787232/)
+- Gdje idu moji paketi? Vodič kroz Go projektne strukture.
+by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/05/meetup-2026-05-go-structure.pdf)
+- local run
+  ```sh
+  go install github.com/oktalz/present@latest
+  present -g github.com/matejb/talks -d 2026/gops-2026
+  ```
+
 ### **GoTalks 28.04.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/314384061/)
 - **dot http** - A CLI tool for executing .http files
 by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/dot-http/Go-meetup-talk-2026-04.pdf)
@@ -11,7 +24,7 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2026/04/dot-http
   ```
 - PDF documents with Go (revisited)
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/)
+by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en.pdf) ([Examples](assets/2026/04/pdf))
 
 
 ### **GoTalks 17.03.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/313763055/)
