@@ -6,6 +6,10 @@
 - **Elixir for Gophers** - Same Problems, Different Solutions
 by [Nikola Begedin](https://www.linkedin.com/in/nikola-begedin-54541036/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/10/talk.pdf)
 
+### **GoTalks 29.09.2026** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/316684288/)
+- **Go e-mail klijent** - Language comparison
+by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/09/Go-mail.pdf)
+
 ### **GoTalks 16.06.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/315240678/)
 - **Go & Typescript** - Language comparison
 by [Tomislav Herman](https://www.linkedin.com/in/tomislavherman/) && [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/06/Go-Typescript.pdf)
