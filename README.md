@@ -1,4 +1,4 @@
-![GolangZG logo](assets/images/Golang-ZG-logo-256x256.png)
+[<img src="assets/images/Golang-ZG-logo-1024x1024.png" alt="png" width="256"/>]
 
 
 ## Golang Zagreb meetup group documents
