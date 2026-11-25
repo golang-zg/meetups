@@ -2,31 +2,36 @@
 
 ## 2026
 
-### **GoTalks 24.11.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/317057368/)
-- **IT infrastructure monitoring** - Implementation of custom agents in Go \
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/), [Matija Bujanić](https://www.linkedin.com/in/matija-bujani%C4%87-aa1a4b2aa/)
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/11/POINTER-HR-Open-source-2026-11-GolangZG-GoTalks-IT-Monitoring-en.pdf)
+### Last Meetup: **GoTalks 27.10.2026** [<img src="assets/images/meetup_logo.jpg" alt="Meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/317057368/)
+- **IT infrastructure monitoring** — Implementation of custom agents in Go \
+  by [Branko Zečević](https://www.linkedin.com/in/bzecevic/), [Matija Bujanić](https://www.linkedin.com/in/matija-bujani%C4%87-aa1a4b2aa/)
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/11/POINTER-HR-Open-source-2026-11-GolangZG-GoTalks-IT-Monitoring-en.pdf)
+  
+  The talk outlines the fundamentals of IT infrastructure monitoring, compares open-source
+  tools (Zabbix vs. Prometheus), and explains how to extend both platforms using custom
+  agents and exporters written in Go.
 
 ### **GoTalks 27.10.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/317057368/)
 - **Elixir for Gophers** - Same Problems, Different Solutions \
-by [Nikola Begedin](https://www.linkedin.com/in/nikola-begedin-54541036/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/10/talk.pdf)
+  by [Nikola Begedin](https://www.linkedin.com/in/nikola-begedin-54541036/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/10/talk.pdf)
 
 ### **GoTalks 29.09.2026** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/316684288/)
 - **Go e-mail klijent** - Language comparison \
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/09/Go-mail.pdf)
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/09/Go-mail.pdf)
 
 ### **GoTalks 16.06.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/315240678/)
 - **Go & Typescript** - Language comparison \
-by [Tomislav Herman](https://www.linkedin.com/in/tomislavherman/) && [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/06/Go-Typescript.pdf)
+  by [Tomislav Herman](https://www.linkedin.com/in/tomislavherman/) && [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/06/Go-Typescript.pdf)
 
 ### **GoTalks 28.05.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/314787232/)
 - **Gdje idu moji paketi?** - Vodič kroz Go projektne strukture \
-by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/05/meetup-2026-05-go-structure.pdf)
-- local run
+  by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/05/meetup-2026-05-go-structure.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present -g github.com/matejb/talks -d 2026/gops-2026
@@ -34,24 +39,26 @@ by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/)
 
 ### **GoTalks 28.04.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/314384061/)
 - **dot http** - A CLI tool for executing .http files \
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/dot-http/Go-meetup-talk-2026-04.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/dot-http/Go-meetup-talk-2026-04.pdf)
+
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2026/04/dot-http
   ```
 - **PDF documents with Go** - (revisited) \
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en.pdf) 
-([Examples](assets/2026/04/pdf))
+  by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/04/pdf/POINTER-Open-source-WW-2026-04-GolangZG-GoTalks-PDF-en.pdf) 
+  ([Examples](assets/2026/04/pdf))
 
 
 ### **GoTalks 17.03.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/313763055/)
 - **CEL - Common expression language** \
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/03/Go-meetup-talk-2026-03.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/03/Go-meetup-talk-2026-03.pdf)
+
+  local run
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2026/03
@@ -59,8 +66,9 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/)
 
 ### **GoTalks 26.02.2026.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/313414970/)
 - **Circus of fire and ash** \
-by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/)
-- local run
+  by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/)
+
+  local run:
   ```sh
   go install github.com/oktalz/present@v1.5.3
   present -g github.com/matejb/talks -d 2026/circus
@@ -68,22 +76,23 @@ by [Matej Baćo](https://www.linkedin.com/in/matej-baco-1547415/)
 
 ### **GoTalks 20.01.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312886578/)
 - **Go Templating & Code Generation** \
-by [Tomas Espeleta](https://www.linkedin.com/in/tespeleta/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/01/Zagreb-GoTalks-Meetup-2026.01-public.pdf)
+  by [Tomas Espeleta](https://www.linkedin.com/in/tespeleta/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2026/01/Zagreb-GoTalks-Meetup-2026.01-public.pdf)
 
 
 ## 2025
 
 ### **GoTalks 16.12.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312342829/)
 - **Go on Bare Metal**
-by [Bruno Banelli](https://www.linkedin.com/in/brunobanelli/)
+  by [Bruno Banelli](https://www.linkedin.com/in/brunobanelli/)
 
 
 ### **GoTalks 25.11.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/312084981/) )
 - **Go Tools**
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/11/2024_11_25.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/11/2024_11_25.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2025/11
@@ -91,15 +100,16 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/)
 
 ### **GoTalks 28.10.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/311563917/) [<img src="assets/images/youtube_logo.jpg" alt="youtube.com" width="24"/>](https://www.youtube.com/watch?v=HYJLRROLOdg)
 - **Pixels, Text, and Go: A Hobbyist’s Guide to Making Games**
-by [Alan Bunjevac](https://www.linkedin.com/in/alan-bunjevac-4926a77a/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/10/go-games.pdf) 
-[<img src="assets/images/github.png" alt="png" width="24"/>](https://github.com/abunjevac/stardemo)
+  by [Alan Bunjevac](https://www.linkedin.com/in/alan-bunjevac-4926a77a/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/10/go-games.pdf) 
+  [<img src="assets/images/github.png" alt="png" width="24"/>](https://github.com/abunjevac/stardemo)
 
 
 ### **GoTalks 23.9.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/311066271/)
 - **Go 1.25**
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/09/meetup-2025-09.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/09/meetup-2025-09.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2025/09
@@ -108,14 +118,15 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) [<img src="
 
 ### **GoTalks 24.6.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/308525129/)
 - **GOing Live - Deploying your first app the right way**
-by [Josip Igrec](https://www.linkedin.com/in/josip-igrec/)
+  by [Josip Igrec](https://www.linkedin.com/in/josip-igrec/)
 
 
 ### **GoTalks 27.05.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/307898101)
 - **Go modules and packages**
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/05/meetup-2025-05.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/05/meetup-2025-05.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2025/05
@@ -123,35 +134,37 @@ by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/)
 
 ### **GoTalks 29.4.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/307302311/)
 - **Building Desktop Apps with Go**
-by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/04/POINTER-Open-source-S007-Prezentacija-Desktop-Apps-GolangZG-GoTalks-2025-04-en.pdf)
+  by [Branko Zečević](https://www.linkedin.com/in/bzecevic/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/04/POINTER-Open-source-S007-Prezentacija-Desktop-Apps-GolangZG-GoTalks-2025-04-en.pdf)
 
 ### **GoTalks 27.03.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/306718932/) [<img src="assets/images/youtube_logo.jpg" alt="youtube.com" width="24"/>](https://www.youtube.com/watch?v=6z9xuje4QXQ)
 - **Golang from the perspective of .Net developer**
-by [Dražen Mrvoš](https://www.linkedin.com/in/dmrvos/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/03/Zagreb-GoTalks-Meetup-27_3.pdf)
+  by [Dražen Mrvoš](https://www.linkedin.com/in/dmrvos/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/03/Zagreb-GoTalks-Meetup-27_3.pdf)
 - **Async service communication**
-by [Antonio Krstičević](https://www.linkedin.com/in/antoniokristicevic/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/03/Zagreb-GoTalks-Meetup-27_3.pdf)
+  by [Antonio Krstičević](https://www.linkedin.com/in/antoniokristicevic/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/03/Zagreb-GoTalks-Meetup-27_3.pdf)
 
 ### **GoTalks 25.02.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/306133678/) [<img src="assets/images/youtube_logo.jpg" alt="youtube.com" width="24"/>](https://www.youtube.com/watch?v=SdbGc_vCg5g)
 - **Go 1.24**
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/02/presentation.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/02/presentation.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2025/02
   ```
-- HTPPS - deep dive
-by [Bruno Banelli](https://www.linkedin.com/in/brunobanelli/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/02/GoMeetupZg-2025-02-HTTPS-deep-dive.pdf)
+- **HTPPS - deep dive**
+  by [Bruno Banelli](https://www.linkedin.com/in/brunobanelli/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/02/GoMeetupZg-2025-02-HTTPS-deep-dive.pdf)
 
 ### **GoTalks 30.01.2025.** [<img src="assets/images/meetup_logo.jpg" alt="meetup.com" width="24"/>](https://www.meetup.com/golang-zg/events/305823027) [<img src="assets/images/youtube_logo.jpg" alt="youtube.com" width="24"/>](https://www.youtube.com/watch?v=C8t7IAM3Nac)
 - **Go Developer Survey, writing http server**
-by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
-[<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/01/presentation.pdf)
-- local run
+  by [Zlatko Bratković](https://www.linkedin.com/in/bratkoviczlatko/) 
+  [<img src="assets/images/pdf.png" alt="png" width="24"/>](assets/2025/01/presentation.pdf)
+  
+  local run:
   ```sh
   go install github.com/oktalz/present@latest
   present --admin-pwd-disable -g github.com/golanghr/golangzg -d assets/2025/01
